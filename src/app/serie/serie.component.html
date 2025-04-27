@@ -1,0 +1,47 @@
+<style>
+  .table thead th {
+    background-color: #f8f9fa; /* fondo gris clarito */
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <table class="table">
+        
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Channel</th>
+            <th scope="col">Seasons</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of series" (click)="showSeriesDetail(s)" style="cursor: pointer;">
+            <td>{{ s.id }}</td>
+            <td><a [href]="s.webpage" target="_blank">{{ s.name }}</a></td>
+            <td>{{ s.channel }}</td>
+            <td>{{ s.seasons }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Seasons average: {{promedio}}</p>
+
+    </div>
+
+    <div class="col-6" *ngIf="selectedSerie">
+      <div class="card" style="width: 100%; max-width: 270px;">
+
+        <img [src]="selectedSerie.poster" class="card-img-top" alt="Card image">
+        <div class="card-body">
+          <h5 class="card-title">{{selectedSerie.name}}</h5>
+          <p class="card-text">{{selectedSerie.description}}</p>
+          <a href="selectedSerie.webpage" target="_blank">{{selectedSerie.webpage}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
